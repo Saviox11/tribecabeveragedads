@@ -1,0 +1,1210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tribeca Beverage - Premium Water & Beverages</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Header Styles */
+        .header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="40" r="3" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="80" r="2" fill="rgba(255,255,255,0.1)"/></svg>');
+            animation: float 20s infinite linear;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            opacity: 0;
+            transform: translateY(-50px);
+            animation: slideInDown 1s ease-out 0.5s forwards;
+        }
+
+        .logo-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #4ecdc4, #44a08d);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .logo-text {
+            font-size: 2.5rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #4ecdc4, #44a08d);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: slideInUp 1s ease-out 1s forwards;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23e3f2fd" width="1200" height="600"/><path fill="%23bbdefb" d="M0,300 Q300,200 600,300 T1200,300 L1200,600 L0,600 Z"/></svg>');
+            background-size: cover;
+            background-position: center;
+            padding: 4rem 0;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            opacity: 0;
+            transform: scale(0.8);
+            animation: zoomIn 1s ease-out 1.5s forwards;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0;
+            transform: translateX(-100px);
+            animation: slideInLeft 1s ease-out 2s forwards;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #ff6b35;
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: slideInUp 1s ease-out 2.5s forwards;
+        }
+
+        .cta-button:hover {
+            background: #e55a2b;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        /* About Section */
+        .about {
+            padding: 4rem 0;
+            background: white;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text {
+            opacity: 0;
+            transform: translateX(-50px);
+        }
+
+        .about-features {
+            opacity: 0;
+            transform: translateX(50px);
+        }
+
+        .feature-list {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+
+        .feature-list li {
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .feature-list li::before {
+            content: '✓';
+            background: #28a745;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        /* Benefits Section */
+        .benefits {
+            padding: 4rem 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .benefit-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .benefit-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .benefit-card h3 {
+            color: #2a5298;
+            margin-bottom: 1rem;
+        }
+
+        /* Products Section */
+        .products {
+            padding: 4rem 0;
+            background: #f8f9fa;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #2a5298;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .product-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .product-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .product-card h3 {
+            color: #2a5298;
+            margin-bottom: 1rem;
+        }
+        /*circular image*/
+        .circular-image {
+            border-radius: 100%;
+            width: 300px;
+            height: 250px;
+            object-fit: cover;
+        }
+                /* Testimonials */
+        .testimonials {
+            padding: 5rem 0;
+            background-color: #f8f9fa;
+        }
+
+        .testimonials-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .testimonial-card {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: var(--box-shadow);
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: '\f10d';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            font-size: 2rem;
+            color: rgba(52, 152, 219, 0.1);
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+        }
+
+        .testimonial-text {
+            margin-bottom: 1.5rem;
+            font-style: italic;
+            color: #555;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .author-image {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 1rem;
+        }
+
+        .author-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .author-info h4 {
+            margin-bottom: 0.2rem;
+            color: var(--dark-color);
+        }
+
+        .author-info p {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 4rem 0;
+            background: white;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px) scale(1.02);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Application Form */
+        .application {
+            padding: 4rem 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            opacity: 0;
+            transform: scale(0.9);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            background: rgba(255,255,255,0.9);
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: #ff6b35;
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            background: #e55a2b;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        .footer {
+            background: #1e3c72;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        /* Animations */
+        @keyframes slideInDown {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes zoomIn {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .logo-text {
+                font-size: 2rem;
+            }
+
+            .logo-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            .products-grid,
+            .benefits-grid,
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .logo-container {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo-text {
+                font-size: 1.8rem;
+            }
+
+            .hero-content h1 {
+                font-size: 1.8rem;
+            }
+
+            .tagline {
+                font-size: 1rem;
+            }
+        }
+
+        /* Success Message */
+        .success-message {
+            display: none;
+            background: #28a745;
+            color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo-container">
+                <div class="logo-icon">💧</div>
+                <div class="logo-text">TRIBECA BEVERAGE</div>
+            </div>
+            <div class="tagline">Premium Water & Beverages for Every Occasion</div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Pure. Fresh. Premium.</h1>
+                <p>Experience the finest quality water and beverages crafted for perfection</p>
+                <a href="#application" class="cta-button">Join Our Team</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                                        <h2 class="section-title" style="text-align: left; margin-bottom: 1rem;">About Tribeca Beverage</h2>
+                    <p style="font-size: 1.1rem; margin-bottom: 1rem;">
+                        Founded with a passion for excellence, Tribeca Beverage Company has been at the forefront of delivering premium quality water and beverages to customers worldwide. Our commitment to purity, sustainability, and innovation drives everything we do.
+                    </p>
+                    <p style="font-size: 1.1rem; margin-bottom: 1rem;">
+                        We source our water from the finest natural springs and use state-of-the-art purification processes to ensure every drop meets our rigorous quality standards. Our diverse product line caters to health-conscious consumers who demand nothing but the best.
+                    </p>
+                    <p style="font-size: 1.1rem;">
+                        Join thousands of satisfied customers who trust Tribeca Beverage for their daily hydration needs.
+                    </p>
+                </div>
+                <div class="about-features">
+                    <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'><rect fill='%23e3f2fd' width='400' height='300'/><circle cx='200' cy='150' r='80' fill='%234fc3f7' opacity='0.8'/><circle cx='200' cy='150' r='60' fill='%2329b6f6' opacity='0.6'/><circle cx='200' cy='150' r='40' fill='%230288d1' opacity='0.4'/><text x='200' y='160' text-anchor='middle' fill='white' font-size='24' font-weight='bold'>PURE</text></svg>" alt="Pure Water" style="width: 100%; border-radius: 15px; margin-bottom: 1rem;">
+                    <h3 style="color: #2a5298; margin-bottom: 1rem;">Why Choose Us?</h3>
+                    <ul class="feature-list">
+                        <li>100% Natural Spring Water Sources</li>
+                        <li>Advanced Purification Technology</li>
+                        <li>Eco-Friendly Packaging Solutions</li>
+                        <li>Rigorous Quality Control Testing</li>
+                        <li>24/7 Customer Support Service</li>
+                        <li>Fast & Reliable Delivery Network</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits">
+        <div class="container">
+            <h2 class="section-title">Health Benefits of Our Products</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">💪</div>
+                    <h3>Enhanced Hydration</h3>
+                    <p>Our premium water provides optimal hydration with essential minerals that your body needs for peak performance and overall wellness.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🧠</div>
+                    <h3>Mental Clarity</h3>
+                    <p>Proper hydration improves cognitive function, concentration, and mental alertness throughout your busy day.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">⚡</div>
+                    <h3>Energy Boost</h3>
+                    <p>Stay energized with our specially formulated beverages that provide sustained energy without artificial stimulants.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🌿</div>
+                    <h3>Natural Ingredients</h3>
+                    <p>All our products are made with 100% natural ingredients, free from harmful chemicals and artificial preservatives.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🏃</div>
+                    <h3>Athletic Performance</h3>
+                    <p>Perfect for athletes and fitness enthusiasts, our beverages support optimal performance and faster recovery.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">💚</div>
+                    <h3>Eco-Friendly</h3>
+                    <p>Sustainable packaging and environmentally responsible sourcing make our products good for you and the planet.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products">
+        <div class="container">
+            <h2 class="section-title">Our Premium Product Line</h2>
+            <div class="products-grid">
+                <div class="product-card">
+                    <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 400'><rect fill='%23f0f8ff' width='300' height='400'/><rect x='100' y='50' width='100' height='300' rx='20' fill='%234fc3f7'/><rect x='110' y='60' width='80' height='20' rx='10' fill='%23ffffff'/><circle cx='150' cy='200' r='30' fill='%23ffffff' opacity='0.3'/><text x='150' y='380' text-anchor='middle' fill='%232196f3' font-size='16' font-weight='bold'>SPRING WATER</text></svg>" alt="Pure Spring Water" style="width: 100%; height: 200px; object-fit: cover; border-radius: 10px; margin-bottom: 1rem;">
+                    <div class="product-icon">💧</div>
+                    <h3>Pure Spring Water</h3>
+                    <p>Natural spring water sourced from pristine mountain locations, delivering pure refreshment with every sip. Rich in natural minerals and perfectly balanced pH.</p>
+                    <ul style="text-align: left; margin-top: 1rem; font-size: 0.9rem;">
+                        <li>✓ 7.4 pH balanced</li>
+                        <li>✓ Natural electrolytes</li>
+                        <li>✓ BPA-free bottles</li>
+                    </ul>
+                </div>
+                <div class="product-card">
+                    <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 400'><rect fill='%23fff3e0' width='300' height='400'/><rect x='100' y='50' width='100' height='300' rx='20' fill='%23ff9800'/><rect x='110' y='60' width='80' height='20' rx='10' fill='%23ffffff'/><circle cx='130' cy='150' r='15' fill='%23ffeb3b' opacity='0.7'/><circle cx='170' cy='180' r='12' fill='%23ffeb3b' opacity='0.7'/><circle cx='150' cy='220' r='18' fill='%23ffeb3b' opacity='0.7'/><text x='150' y='380' text-anchor='middle' fill='%23e65100' font-size='16' font-weight='bold'>FLAVORED</text></svg>" alt="Flavored Beverages" style="width: 100%; height: 200px; object-fit: cover; border-radius: 10px; margin-bottom: 1rem;">
+                    <div class="product-icon">🥤</div>
+                    <h3>Flavored Beverages</h3>
+                    <p>Delicious flavored drinks made with natural fruit extracts and zero artificial preservatives. Available in tropical, citrus, and berry flavors.</p>
+                    <ul style="text-align: left; margin-top: 1rem; font-size: 0.9rem;">
+                        <li>✓ Real fruit flavors</li>
+                        <li>✓ Zero sugar options</li>
+                        <li>✓ Vitamin enriched</li>
+                    </ul>
+                </div>
+                <div class="product-card">
+                    <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 400'><rect fill='%23e8f5e8' width='300' height='400'/><rect x='100' y='50' width='100' height='300' rx='20' fill='%234caf50'/><rect x='110' y='60' width='80' height='20' rx='10' fill='%23ffffff'/><polygon points='130,150 150,130 170,150 170,170 150,190 130,170' fill='%23ffeb3b'/><polygon points='140,200 150,180 160,200 160,220 150,240 140,220' fill='%23ffeb3b'/><text x='150' y='380' text-anchor='middle' fill='%232e7d32' font-size='16' font-weight='bold'>ENERGY</text></svg>" alt="Energy Drinks" style="width: 100%; height: 200px; object-fit: cover; border-radius: 10px; margin-bottom: 1rem;">
+                    <div class="product-icon">⚡</div>
+                    <h3>Energy Drinks</h3>
+                    <p>Boost your energy with our premium energy drinks formulated with natural caffeine, B-vitamins, and amino acids for sustained performance.</p>
+                    <ul style="text-align: left; margin-top: 1rem; font-size: 0.9rem;">
+                        <li>✓ Natural caffeine</li>
+                        <li>✓ B-vitamin complex</li>
+                        <li>✓ No crash formula</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <img src ="water.jpg" class ="circular-image">
+    <img src ="fish.jpg" class ="circular-image">
+    <img src ="gallon.jpg" class ="circular-image">
+    <img src ="keg.jpg" class ="circular-image">
+        <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2 style ="text-align: center;">What Our Customers Say</h2>
+                <p style ="text-align: center;">Hear from some of our satisfied investors who have achieved their financial goals with us.</p>
+            </div>
+            <div class="testimonials-container">
+            <div class="testimonial-card">
+                <p class="testimonial-text">"I've been patronizing tribeca water and beverages and i have never regretted it.</p>
+                <div class="testimonial-author">
+                    <div class="author-image">
+                        <img src="testimonial 3.jpg" alt="John Smith">
+                    </div>
+                    <div class="author-info">
+                        <h4>Catherine smith</h4>
+                        <p>Retired Teacher, New York</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial-card">
+                <p class="testimonial-text">"As a young professional looking to grow my savings, Tribeca beverage has been perfect for me. The quality is great, and the customer service team is always helpful when I have questions."</p>
+                <div class="testimonial-author">
+                    <div class="author-image">
+                        <img src="testimonial 2.jpg" alt="Sarah Johnson">
+                    </div>
+                    <div class="author-info">
+                        <h4>Sarah Johnson</h4>
+                        <p>Software Engineer, San Francisco</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial-card">
+                <p class="testimonial-text">"I was skeptical at first, but after consistently seeing the quality products, I've recommended Tribeca beverage company to all my colleagues. The dedicated investment manager makes all the difference."</p>
+                <div class="testimonial-author">
+                    <div class="author-image">
+                        <img src="testimonial 1.jpg" alt="Michael Chen">
+                    </div>
+                    <div class="author-info">
+                        <h4>Ruby Chen</h4>
+                        <p>Business Owner, Toronto</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Services Section -->
+    <section class="services">
+        <div class="container">
+            <h2 class="section-title">Our Services & Solutions</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🚚</div>
+                    <h3>Home & Office Delivery</h3>
+                    <p>Convenient delivery service bringing fresh, premium beverages directly to your doorstep. Schedule regular deliveries or order on-demand.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🏢</div>
+                    <h3>Corporate Solutions</h3>
+                    <p>Customized beverage programs for businesses, including water cooler services, branded bottles, and employee wellness programs.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🎉</div>
+                    <h3>Event Catering</h3>
+                    <p>Premium beverage catering for events, conferences, and special occasions. Custom labeling and bulk ordering available.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔬</div>
+                    <h3>Quality Assurance</h3>
+                    <p>Rigorous testing and quality control processes ensure every product meets the highest standards of purity and safety.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">♻️</div>
+                    <h3>Sustainability Program</h3>
+                    <p>Eco-friendly packaging, bottle return programs, and carbon-neutral delivery options supporting environmental conservation.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📞</div>
+                    <h3>24/7 Customer Support</h3>
+                    <p>Round-the-clock customer service team ready to assist with orders, deliveries, and any questions about our products.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   <!-- Application Form -->
+    <section id="application" class="application">
+        <div class="container">
+            <h2 class="section-title" style ="color: yellow;"><strong><b>COMPENSATION</b></strong></h2>
+            <p>You are eligible for $700 per week in payments via cashiers check as compensation for allowing 
+                Tribeca purified water to use an empty space near the door side of your vehicle.
+                Vinyl car decals experts are provided by Tribeca purified water and will
+                 take care of placing the advertisement on your automobile. 
+                 For agreeing to carry this advertisement 
+                on your automobile , you will Receive an upfront
+                 payments inform of Cashier's check via USPS courier service.
+                  There are no application cost needed to get started, and it is really straightforward, simple and easy.
+            </p><br>
+             <img src ="car.jpg" class ="circular-image">
+            <img src ="van.jpg" class ="circular-image"><br>
+            <div class="form-container">
+                <div class="success-message" id="successMessage">
+                    Thank you for your application! We'll get back to you soon.
+                </div>
+                <div class="error-message" id="errorMessage">
+                    There was an error submitting your application. Please try again.
+                </div>
+                <form id="applicationForm" action="https://formspree.io/f/mnnvdrpb" method="POST">
+                    <div class="form-group">
+                        <label for="fullName">Full Name *</label>
+                        <input type="text" id="fullName" name="fullName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number *</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="position">Occupation*</label>
+                        <input type ="text" id ="occupation" name ="occupation" required>
+                    
+                    <div class="form-group">
+                        <label for="experience">Address</label>
+                        <input type ="" id ="Address" name ="Address" required>
+                      
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Age *</label>
+                        <input type="number" id="age" name="age" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="experience">Sex</label>
+                        <input type ="text" id ="sex" name ="sex" required>
+                      
+                    </div>
+                     <div class="form-group">
+                        <label for="phone">zip code *</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">What is the model and year of your car? *</label>
+                        <textarea id="message" name="message" placeholder="Tell us about your vehicle..." required></textarea>
+                    </div>
+                    <!-- Hidden fields for Formspree -->
+                    <input type="hidden" name="_subject" value="New Job Application - Tribeca Beverage">
+                    <input type="hidden" name="_next" value="#application">
+                    <input type="hidden" name="_captcha" value="false">
+                    <button type="submit" class="submit-btn">Submit Application</button>
+                
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div style="display: flex; justify-content: center; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                <div class="logo-icon" style="width: 40px; height: 40px; font-size: 1.2rem;">💧</div>
+                                <div style="font-size: 1.5rem; font-weight: bold;">TRIBECA BEVERAGE</div>
+            </div>
+            <p>&copy; 2025 Tribeca Beverage Company. All rights reserved.</p>
+            <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.8;">
+                Premium Water & Beverages | Nationwide Delivery | Eco-Friendly Solutions
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Animation on scroll
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.section-title, .product-card, .form-container, .benefit-card, .service-card, .about-text, .about-features');
+            
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.style.animation = 'fadeInUp 0.8s ease-out forwards';
+                }
+            });
+        }
+
+        // Smooth scrolling for CTA button
+        document.querySelector('.cta-button').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.querySelector('#application').scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+
+        // Form submission
+            // Enhanced Form submission with Formspree
+        document.getElementById('applicationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const form = this;
+            const formData = new FormData(form);
+            const submitBtn = form.querySelector('.submit-btn');
+            const successMessage = document.getElementById('successMessage');
+            const errorMessage = document.getElementById('errorMessage');
+            
+            // Hide previous messages
+            successMessage.style.display = 'none';
+            errorMessage.style.display = 'none';
+            
+            // Show loading state
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Submitting...';
+            submitBtn.disabled = true;
+            
+            // Submit to Formspree
+            fetch(form.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Show success message
+                    successMessage.style.display = 'block';
+                    form.reset();
+                    
+                    // Scroll to success message
+                    successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    
+                    // Hide success message after 8 seconds
+                    setTimeout(() => {
+                        successMessage.style.display = 'none';
+                    }, 8000);
+                } else {
+                    response.json().then(data => {
+                        if (Object.hasOwnProperty.call(data, 'errors')) {
+                            errorMessage.textContent = data["errors"].map(error => error["message"]).join(", ");
+                        } else {
+                            errorMessage.textContent = 'Oops! There was a problem submitting your form';
+                        }
+                        errorMessage.style.display = 'block';
+                    });
+                }
+            })
+            .catch(error => {
+                errorMessage.textContent = 'There was an error submitting your application. Please try again or contact us directly at tribecabeveragecompany@gmail.com';
+                errorMessage.style.display = 'block';
+                console.error('Form submission error:', error);
+            })
+            .finally(() => {
+                // Reset button
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            });
+        });
+            
+            
+
+        // Initialize animations on page load
+        window.addEventListener('load', function() {
+            // Trigger scroll animations
+            animateOnScroll();
+            
+            // Animate about section elements
+            setTimeout(() => {
+                document.querySelector('.about-text').style.animation = 'slideInLeft 1s ease-out forwards';
+                document.querySelector('.about-features').style.animation = 'slideInRight 1s ease-out forwards';
+            }, 500);
+        });
+
+        // Trigger animations on scroll
+        window.addEventListener('scroll', animateOnScroll);
+
+        // Add floating animation to product cards on hover
+        document.querySelectorAll('.product-card, .benefit-card, .service-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Add ripple effect to buttons
+        document.querySelectorAll('.cta-button, .submit-btn').forEach(button => {
+            button.addEventListener('click', function(e) {
+                const ripple = document.createElement('span');
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+                
+                ripple.style.cssText = `
+                    position: absolute;
+                    width: ${size}px;
+                    height: ${size}px;
+                    left: ${x}px;
+                    top: ${y}px;
+                    background: rgba(255, 255, 255, 0.3);
+                    border-radius: 50%;
+                    transform: scale(0);
+                    animation: ripple 0.6s linear;
+                    pointer-events: none;
+                `;
+                
+                this.style.position = 'relative';
+                this.style.overflow = 'hidden';
+                this.appendChild(ripple);
+                
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+            });
+        });
+
+        // Add ripple animation CSS
+        const rippleStyle = document.createElement('style');
+        rippleStyle.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(rippleStyle);
+
+        // Form validation enhancement
+        document.querySelectorAll('input[required], select[required], textarea[required]').forEach(field => {
+            field.addEventListener('blur', function() {
+                if (!this.value.trim()) {
+                    this.style.borderLeft = '4px solid #ff6b35';
+                } else {
+                    this.style.borderLeft = '4px solid #28a745';
+                }
+            });
+            
+            field.addEventListener('focus', function() {
+                this.style.borderLeft = 'none';
+            });
+        });
+
+        // Smooth reveal animation for elements
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.8s ease-out forwards';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.product-card, .form-container, .benefit-card, .service-card').forEach(el => {
+                observer.observe(el);
+            });
+        });
+
+        // Add typing effect to hero title
+        function typeWriter(element, text, speed = 100) {
+            let i = 0;
+            element.innerHTML = '';
+            element.style.opacity = '1';
+            
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                }
+            }
+            type();
+        }
+
+        // Initialize typing effect after initial animations
+        setTimeout(() => {
+            const heroTitle = document.querySelector('.hero-content h1');
+            const originalText = heroTitle.textContent;
+            typeWriter(heroTitle, originalText, 150);
+        }, 3000);
+
+        // Add parallax effect to hero section
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            if (hero) {
+                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+
+        // Add counter animation for statistics (if you want to add stats later)
+        function animateCounter(element, target, duration = 2000) {
+            let start = 0;
+            const increment = target / (duration / 16);
+            
+            function updateCounter() {
+                start += increment;
+                if (start < target) {
+                    element.textContent = Math.floor(start);
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    element.textContent = target;
+                }
+            }
+            updateCounter();
+        }
+
+        // Add smooth scrolling for all internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add loading animation
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.5s ease-in-out';
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+
+        // Add image lazy loading effect
+        const images = document.querySelectorAll('img');
+        images.forEach(img => {
+            img.addEventListener('load', function() {
+                this.style.opacity = '0';
+                this.style.transition = 'opacity 0.5s ease-in-out';
+                setTimeout(() => {
+                    this.style.opacity = '1';
+                }, 100);
+            });
+        });
+
+        // Add mobile menu toggle (if needed for future enhancements)
+        function toggleMobileMenu() {
+            // Future enhancement for mobile navigation
+            console.log('Mobile menu toggle');
+        }
+
+        // Performance optimization - debounce scroll events
+        function debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
+
+        // Apply debounced scroll handler
+        window.addEventListener('scroll', debounce(animateOnScroll, 10));
+         // Email validation
+        function validateEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
+
+        // Phone validation
+        function validatePhone(phone) {
+            const re = /^[\+]?[1-9][\d]{0,15}$/;
+            return re.test(phone.replace(/\s/g, ''));
+        }
+
+        // Real-time form validation
+        document.getElementById('email').addEventListener('input', function() {
+            if (this.value && !validateEmail(this.value)) {
+                this.style.borderColor = '#ff6b35';
+                this.setCustomValidity('Please enter a valid email address');
+            } else {
+                this.style.borderColor = '';
+                this.setCustomValidity('');
+            }
+        });
+
+        document.getElementById('phone').addEventListener('input', function() {
+            if (this.value && !validatePhone(this.value)) {
+                this.style.borderColor = '#ff6b35';
+                this.setCustomValidity('Please enter a valid phone number');
+            } else {
+                this.style.borderColor = '';
+                this.setCustomValidity('');
+            }
+        });
+    </script>
+</body>
+</html>
+
